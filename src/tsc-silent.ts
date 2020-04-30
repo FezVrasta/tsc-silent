@@ -21,7 +21,7 @@ const {
     "--watch": argWatch = false,
     "--stats": argStats = false,
     "--help": argHelp = false,
-    "--suppressCOnfig": argSuppressConfig = false,
+    "--suppressConfig": argSuppressConfig = false,
 } = arg({
     "--suppress": [String],
     "--compiler": String,
@@ -32,7 +32,7 @@ const {
     "-w": "--watch",
     "--stats": Boolean,
     "--help": Boolean,
-    suppressConfig: Boolean,
+    "--suppressConfig": Boolean,
 });
 const argv = {
     _: arg_,
