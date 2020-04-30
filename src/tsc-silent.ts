@@ -15,7 +15,7 @@ const arg = require("arg");
 const {
     _: arg_,
     "--suppress": argSuppress = [],
-    "--compiler": argCompiler,
+    "--compiler": argCompiler = "node_modules/typescript/lib/typescript.js",
     "--project": argProject,
     "--createSourceFile": argCreateSourceFile,
     "--watch": argWatch = false,
