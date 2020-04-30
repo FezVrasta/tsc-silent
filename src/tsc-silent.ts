@@ -3,6 +3,7 @@ interface Argv {
     suppress: string[];
     compiler: string;
     project: string;
+    createSourceFile?: string;
     watch: boolean;
     stats: boolean;
     help: boolean;
@@ -74,7 +75,8 @@ const formatHost: ts.FormatDiagnosticsHost = {
 
 if (argv.createSourceFile) {
   const originalCreateSourceFile = ts.createSourceFile;
-  ts.createSourceFile = require(argv.createSourceFile)(originalCreateSourceFile);
+  // @ts-ignore
+  ts.createSourceFile = require(`${process.cwd()}/${argv.createSourceFile}`)(originalCreateSourceFile);
 }
 
 if (argv.watch) {
@@ -274,7 +276,7 @@ function printUsage() {
     console.log();
     console.log("  --stats             Print number of suppressed errors per path and error code.");
     console.log();
-    console.log(". --createSourceFile  Custom module to use in place of the default TypeScript logic,
+    console.log(". --createSourceFile  Custom module to use in place of the default TypeScript logic");
     console.log("                      it expects a module that exports a single function, with the");
     console.log("                      original TypeScript function as sole argument.");
     console.log();
